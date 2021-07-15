@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
     if @comment.save
       render json: @comment, status: :created, location: @comment
     else
-      render json: @comment.errors, status: :unprocessable_entity
+      render json: {errors: "Comment could not be updated"}
     end
   end
 
@@ -29,13 +29,17 @@ class CommentsController < ApplicationController
     if @comment.update(comment_params)
       render json: @comment
     else
-      render json: @comment.errors, status: :unprocessable_entity
+      render json: {errors: "Comment could not be updated"}
     end
   end
 
   # DELETE /comments/1
   def destroy
-    @comment.destroy
+    if @comment = current_user.comments.find_by_id(params[:id])
+      @comment.destroy
+    else
+      render json: {errors: "Comment could not be deleted"}
+    end
   end
 
   private
