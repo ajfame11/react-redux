@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
+  resources :users
   resources :posts
   resources :comments
-  resources :users
 
   post '/authenticate', to: 'auth#create'
   get '/profile', to: 'auth#profile'
