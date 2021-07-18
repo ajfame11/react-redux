@@ -6,7 +6,7 @@ class Home extends React.Component {
     return (
       <div id="home">
 
-        <h1>Welcome to the Shopping List!</h1>
+        <h1>Welcome to The Blogger!</h1>
 
       </div>
     )

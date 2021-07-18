@@ -10,7 +10,9 @@ import { connect } from 'react-redux'
 import Home from "./components/Home"
 
 
-class App extends React.Component {
+class App extends Component {
+
+    
   
     render() {
       return (
@@ -20,7 +22,11 @@ class App extends React.Component {
         <Switch>
   
         <Route exact path="/" render={() => <Home />} />
-  
+
+        <Route exact path="/" render={() => <Home />} />
+
+        <Route exact path="/" render={() => <Home />} />
+
         </Switch>
   
         </div>
@@ -29,3 +35,5 @@ class App extends React.Component {
     }
   }
   
+  
+  export default App
