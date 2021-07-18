@@ -8,6 +8,8 @@ import { connect } from 'react-redux'
 
 // components
 import Home from "./components/Home"
+import Login from "./components/Login"
+// import Profile from "./components/Profile"
 
 
 class App extends Component {
@@ -23,9 +25,9 @@ class App extends Component {
   
         <Route exact path="/" render={() => <Home />} />
 
-        <Route exact path="/" render={() => <Home />} />
+        <Route path="/login" render={() => <Login />} />
 
-        <Route exact path="/" render={() => <Home />} />
+        {/* <Route path="/profile" render={() => <Profile />} /> */}
 
         </Switch>
   
