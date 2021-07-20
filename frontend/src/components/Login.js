@@ -44,6 +44,8 @@ class Login extends Component {
     return (
       <div>
 
+          {/* <p>{localStorage.getItem('jwt')}</p> */}
+
         <form onSubmit={this.handleSubmit}>
 
           <p style={{color: 'red'}}>{this.state.message}</p>

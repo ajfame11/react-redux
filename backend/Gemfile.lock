@@ -165,6 +165,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.4)
   byebug
+  dotenv
   dotenv-rails
   jwt
   listen (~> 3.3)

@@ -12,6 +12,7 @@ class ApplicationController < ActionController::API
       if auth_header
         token = auth_header.split(' ')[1]
         begin
+          # byebug
           JWT.decode(token, ENV['JWT_SECRET'])[0]
         rescue JWT::DecodeError
           nil

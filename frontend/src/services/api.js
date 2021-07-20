@@ -21,10 +21,10 @@ export function authRequest(credentials) {
   .then(parseJSON)
 }
 
-// export function profileRequest() {
-//   console.log(authHeaders())
-//   return fetch(URL + 'profile', {
-//     headers: authHeaders()
-//   })
-//   .then(parseJSON)
-// }
+export function profileRequest() {
+  console.log(authHeaders())
+  return fetch(URL + 'profile', {
+    headers: authHeaders()
+  })
+  .then(parseJSON)
+}
