@@ -26,7 +26,7 @@ class Profile extends Component {
   render() {
     return (
       <div>
-          <h1>{this.state.username}'s Profile!</h1>
+          {this.state.username ? <h1>{this.state.username}'s Profile</h1> : <h1>Loading...</h1>}
 {/* 
         {!getToken() ? <Redirect to="/login" /> : null}
 
