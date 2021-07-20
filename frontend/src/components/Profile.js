@@ -1,49 +1,39 @@
 import React, { Component } from 'react'
-// import { getUser } from '../redux/actions/userActions'
+import { getUser } from '../actions/userActions'
 import { connect } from 'react-redux'
-// import { getToken } from '../services/local-storage'
 import { Redirect } from 'react-router-dom'
 import { profileRequest } from '../services/api'
 
 class Profile extends Component {
 
-    state = {
-        username: '',
-        email: '',
-        posts: [],
-        comments:[]
-    }
 
     componentDidMount() {
-        profileRequest()
-        .then(res => {
-            if (!res.error) {
-                this.setState({username: res.username, email: res.email, posts: res.posts, comments: res.comments})
-            }
-        })
+      // console.log("A", this.props)
+      this.props.getUser()
     }
 
   render() {
+    console.log(this.props.user)
     return (
       <div>
-          {this.state.username ? <h1>{this.state.username}'s Profile</h1> : <h1>Loading...</h1>}
-{/* 
-        {!getToken() ? <Redirect to="/login" /> : null}
-
-        {this.props.user.username ? <h1>{this.props.user.username}'s Profile</h1> : <h1>Loading...</h1>} */}
+          {this.props.user && this.props.user.username ? <h1>{this.props.user.username}'s Profile</h1> : <h1>Loading...</h1>}
 
       </div>
     )
   }
 }
 
-// const mapStateToProps = state => {
-//   const {user, groceryItems} = state
-//   return {
-//     user, groceryItems
-//   }
-// }
+const mapStateToProps = state => {
+  console.log("Profile", state)
+  return {
+    user: state.userReducer
+  }
+}
 
-// export default connect(mapStateToProps)(Profile)
+const mapDispatchToProps = dispatch => {
+  return {
+    getUser: () => dispatch(getUser())
+  }
+}
 
-export default Profile
+export default connect(mapStateToProps, mapDispatchToProps)(Profile)
