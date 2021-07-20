@@ -11,13 +11,20 @@ import Home from "./components/Home"
 import Login from "./components/Login"
 import Profile from "./components/Profile"
 
+// services
+import { clearToken, getToken } from './services/local-storage'
+
 
 class App extends Component {
 
-    
+  handleLogout = () => {
+    clearToken()
+  }
   
     render() {
+
       return (
+        
         <Router>
         <div className="App">
   
@@ -30,6 +37,8 @@ class App extends Component {
         <Route path="/profile" render={() => <Profile />} />
 
         </Switch>
+
+        <button onClick={this.handleLogout}>Logout</button>
   
         </div>
         </Router>

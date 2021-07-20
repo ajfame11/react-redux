@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { getUser } from '../actions/userActions'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-import { profileRequest } from '../services/api'
+// import { profileRequest } from '../services/api'
+import { getToken } from '../services/local-storage'
 
 class Profile extends Component {
 
@@ -13,9 +14,12 @@ class Profile extends Component {
     }
 
   render() {
-    console.log(this.props.user)
+    // console.log(this.props.user)
     return (
       <div>
+
+        {/* {!getToken() ? <Redirect to="/login" /> : null} */}
+
           {this.props.user && this.props.user.username ? <h1>{this.props.user.username}'s Profile</h1> : <h1>Loading...</h1>}
 
       </div>
@@ -24,7 +28,7 @@ class Profile extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log("Profile", state)
+  // console.log("Profile", state)
   return {
     user: state.userReducer
   }

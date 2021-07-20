@@ -3,7 +3,7 @@ import { profileRequest } from '../services/api'
 export const getUser = () => {
   return (dispatch) => {
     profileRequest().then(response => {
-        console.log(response)
+        // console.log(response)
 
       dispatch({type: 'SET_USER', payload: response})
     })
