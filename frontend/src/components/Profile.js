@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { getUser } from '../actions/userActions'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-// import { profileRequest } from '../services/api'
 import { getToken } from '../services/local-storage'
 
 class Profile extends Component {

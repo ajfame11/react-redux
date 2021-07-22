@@ -13,12 +13,15 @@ import Profile from "./components/Profile"
 
 // services
 import { clearToken, getToken } from './services/local-storage'
+import AllPosts from './Pages/AllPosts/AllPosts';
+import Post from './components/Post';
 
 
 class App extends Component {
 
   handleLogout = () => {
     clearToken()
+    window.location.href="/login" 
   }
   
     render() {
@@ -36,9 +39,13 @@ class App extends Component {
 
         <Route path="/profile" render={() => <Profile />} />
 
+        <Route path="/AllPosts" render={() => <AllPosts />} />
+
+        <Route path="/Post" render={() => <Post />} />
+
         </Switch>
 
-        <button onClick={this.handleLogout}>Logout</button>
+        {/* <button onClick={this.handleLogout}>Logout</button> */}
   
         </div>
         </Router>
