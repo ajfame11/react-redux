@@ -4,6 +4,10 @@ export const postsReducer = (state = [], action) => {
             return action.payload
         case 'ADD_POST':
             return [...state, action.payload]
+        case("POST_EDIT"):
+            return [...state, action.payload]
+        case("POST_DELETE"):
+            return [...state, state.filter(post => post.id != action.payload) ]
         default:
             return state
     }

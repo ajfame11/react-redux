@@ -5,6 +5,7 @@ import Home from './Home'
 import PostsList from './PostsList'
 import About from '../components/About'
 import PostView from './PostView';
+import EditPost from './EditPost';
 
 const Router = () => {
     return (
@@ -13,6 +14,7 @@ const Router = () => {
             <Route  path='/about' component={About} />
             <Route exact path='/Posts' component={PostsList} />
             <Route exact path='/viewpost/:id' component={PostView} />
+            <Route exact path='/editpost/:id' component={EditPost} />
         </Switch>
     );
 };
