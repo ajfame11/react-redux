@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import Post from './Post';
 import PostForm from './PostForm'
-import View from './View'
+// import View from './View'
 
 const PostsList = ({ posts }) => {
     return(

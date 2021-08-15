@@ -1,7 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import './Post.css'
-import PostView from './PostView'
+// import PostView from './PostView'
 import { useDispatch } from 'react-redux'
 import { deletePost } from '../actions/postsActions'
 
