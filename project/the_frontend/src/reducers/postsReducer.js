@@ -7,7 +7,10 @@ export const postsReducer = (state = [], action) => {
         case("POST_EDIT"):
             return [...state, action.payload]
         case("POST_DELETE"):
-            return [...state, state.filter(post => post.id != action.payload) ]
+            // console.log([...state, state.filter(post => post.id !== action.payload) ])
+            return [...state.filter(post => post.id !== action.payload) ]
+
+             
         default:
             return state
     }

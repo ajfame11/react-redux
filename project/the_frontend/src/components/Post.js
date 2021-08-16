@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import './Post.css'
 // import PostView from './PostView'
-import { useDispatch } from 'react-redux'
-import { deletePost } from '../actions/postsActions'
+import { useDispatch, useSelector } from 'react-redux'
+import { deletePost, getPosts } from '../actions/postsActions'
 
 function Post({title, body, id}) {
     const history= useHistory()
@@ -11,11 +11,13 @@ function Post({title, body, id}) {
         history.push(`/viewpost/${id}`)
     }
     const dispatch= useDispatch()
-
+    const posts= useSelector(state => state.posts)
     const handleDeletePost=(id)=>{
         dispatch(deletePost(id))
-        window.location.reload()
-    }
+        // dispatch(getPosts())
+        // window.location.reload()
+       
+       }
     return (
         <div  className="post">
             <div onClick={()=>handlePostView(title, body, id)} className="postTitle pointer" >
