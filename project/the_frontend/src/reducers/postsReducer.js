@@ -1,14 +1,33 @@
-export const postsReducer = (state = [], action) => {
+export const postsReducer = (state = {
+    posts:[],
+    selectedPost:''
+}, action) => {
     switch(action.type){
         case 'GET_POSTS':
-            return action.payload
+            return {
+                ...state,
+                posts: action.payload
+            }
         case 'ADD_POST':
-            return [...state, action.payload]
+            return{
+                ...state,
+                posts: [...state.posts, action.payload]
+            }
+            case 'SELECTED_POST':
+                return{...state,
+                selectedPost: action.payload}
+
         case("POST_EDIT"):
-            return [...state, action.payload]
+            return {
+                ...state,
+                posts: [...state.posts, action.payload]
+            }
         case("POST_DELETE"):
             // console.log([...state, state.filter(post => post.id !== action.payload) ])
-            return [...state.filter(post => post.id !== action.payload) ]
+            return {
+                ...state,
+                posts: [...state.posts.filter(post => post.id !== action.payload) ]
+            }
 
              
         default:

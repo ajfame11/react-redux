@@ -2,9 +2,22 @@
 
 export const getPosts = () => {
     return (dispatch) => {
+        console.log("c")
         fetch('http://localhost:3000/posts')
         .then(resp => resp.json())
         .then(posts => dispatch({ type: 'GET_POSTS', payload: posts}))
+    console.log('d')
+    }
+}
+
+export const getPost = (id) => {
+    return(dispatch) => {
+        fetch(`http://localhost:3000/posts/${id}`).then(res => res.json().then(data => {
+        
+        return dispatch({type: 'SELECTED_POST', payload: data})
+        
+        // return setPost(data)
+    }))
     }
 }
 

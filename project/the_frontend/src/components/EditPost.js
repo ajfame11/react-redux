@@ -1,36 +1,48 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 // import { connect } from 'react-redux'
 // import { Button, Card, Form } from 'react-bootstrap'
 // import { Link } from 'react-router-dom';
-import { useState } from 'react';
 import { useEffect } from 'react';
-import {useDispatch} from 'react-redux'
-import { editPost } from '../actions/postsActions';
+import { connect, useDispatch, useSelector} from 'react-redux'
+import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import { editPost, getPost } from '../actions/postsActions';
 // import { editPost } from '../actions/postActions';
 
 
-function EditPost(props) {
+const EditPost=(props)=> {
 
-    const [post, setPost] = useState([])
-    const [title, setTiltle] = useState("")
-    const [body, setBody] = useState("")
+    // const [post, setPost] = useState([])
+    
+    
+    const id= props.match.params.id
 
-    const id = props.match.params.id
+   const location= useLocation()
+   const dispatch= useDispatch()
+   const post = useSelector(state=> state.posts.selectedPost)
+   const [title, setTiltle] = useState(location.state.title)
+   const [body, setBody] = useState(location.state.body)
+   const history=  useHistory()
 
-    useEffect(() => {
-        console.log(id)
-        getPost(id)
-    }, [id])
-
+   useEffect( ()=>{
+    console.log(id)
    
-    const getPost = (id) => {
-        fetch(`http://localhost:3000/posts/${id}`).then(res => res.json().then(data => {
+       dispatch(getPost(id))
+    //    setTiltle(post.title)
+    //    setBody(post.body)
+      
+   },[id])
+   
+ 
+   
+   
+    // const getPost = (id) => {
+    //     fetch(`http://localhost:3000/posts/${id}`).then(res => res.json().then(data => {
             
-            setTiltle(data.title)
-            setBody(data.body)
-            return setPost(data)
-        }))
-    }
+    //         setTiltle(data.title)
+    //         setBody(data.body)
+    //         return setPost(data)
+    //     }))
+    // }
     const handleChange = e => {
         const { name, value } = e.target
         if (name == "title") {
@@ -41,8 +53,8 @@ function EditPost(props) {
             setBody(value)
         }
     }
-    const dispatch= useDispatch()
-    const handleSubmit = e => {
+    
+    const handleSubmit = async (e )=> {
         e.preventDefault()
         // this.props.addPost(this.state)
         const tempPost={
@@ -50,8 +62,10 @@ function EditPost(props) {
             body: body,
             id: id
         }
-        dispatch(editPost(tempPost))
-        window.location.assign("/posts")
+         dispatch(editPost(tempPost))
+         history.push('/posts')
+        // window.location.assign("/posts")
+        
 
     }
 
@@ -70,4 +84,4 @@ function EditPost(props) {
     )
 }
 
-export default EditPost
+export default connect(state => state,{editPost}) (EditPost)

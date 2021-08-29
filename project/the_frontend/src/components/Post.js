@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import './Post.css'
 // import PostView from './PostView'
@@ -11,13 +11,16 @@ function Post({title, body, id}) {
         history.push(`/viewpost/${id}`)
     }
     const dispatch= useDispatch()
-    const posts= useSelector(state => state.posts)
+    const posts= useSelector(state => state.posts.posts)
     const handleDeletePost=(id)=>{
         dispatch(deletePost(id))
         // dispatch(getPosts())
         // window.location.reload()
        
        }
+
+      
+
     return (
         <div  className="post">
             <div onClick={()=>handlePostView(title, body, id)} className="postTitle pointer" >
@@ -25,7 +28,13 @@ function Post({title, body, id}) {
             </div>
             <div className="postBody" >
                 <div className="postButtons" >
-                    <div onClick={()=>history.push(`/editpost/${id}`)} className="postEdit pointer">
+                    <div onClick={()=>history.push({pathname:`/editpost/${id}`, 
+                state: {
+                    title: title,
+                    body: body,
+                    id:id
+                }
+                })} className="postEdit pointer">
                         Edit
                     </div>
                     <div onClick={()=> handleDeletePost(id)} className="postDelete pointer">
