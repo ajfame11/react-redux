@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import './Post.css'
 // import PostView from './PostView'
@@ -18,9 +18,6 @@ function Post({title, body, id}) {
         // window.location.reload()
        
        }
-
-      
-
     return (
         <div  className="post">
             <div onClick={()=>handlePostView(title, body, id)} className="postTitle pointer" >
