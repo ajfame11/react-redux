@@ -27,22 +27,9 @@ const EditPost=(props)=> {
     console.log(id)
    
        dispatch(getPost(id))
-    //    setTiltle(post.title)
-    //    setBody(post.body)
       
    },[id])
    
- 
-   
-   
-    // const getPost = (id) => {
-    //     fetch(`http://localhost:3000/posts/${id}`).then(res => res.json().then(data => {
-            
-    //         setTiltle(data.title)
-    //         setBody(data.body)
-    //         return setPost(data)
-    //     }))
-    // }
     const handleChange = e => {
         const { name, value } = e.target
         if (name == "title") {
