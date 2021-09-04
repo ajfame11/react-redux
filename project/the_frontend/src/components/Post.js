@@ -7,6 +7,7 @@ import { deletePost } from '../actions/postsActions'
 
 function Post({title, body, id}) {
     const history= useHistory()
+    
     const handlePostView=()=>{
         history.push(`/viewpost/${id}`)
     }
@@ -16,6 +17,7 @@ function Post({title, body, id}) {
         dispatch(deletePost(id))
         
     }
+ 
     return (
         <div  className="post">
             <div onClick={()=>handlePostView(title, body, id)} className="postTitle pointer" >
