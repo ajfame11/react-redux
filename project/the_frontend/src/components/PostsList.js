@@ -22,8 +22,4 @@ const PostsList = () => {
     );
 };
 
-// const mapStateToProps = state => {
-//     return { posts: state.posts.posts }
-// }
-
 export default (PostsList);
