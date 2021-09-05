@@ -15,13 +15,9 @@ function PostView(props) {
     console.log(id)
        dispatch(getPost(id))
    },[id])
+   
    const post = useSelector(state => state.posts.selectedPost)
 
-//    const getPost=(id)=>{
-//     fetch(`http://localhost:3000/posts/${id}`).then(res => res.json().then(data => setPost(data)))
-    
-
-//    }
     return (
         <div className="postView">
             <div className="postViewTitle" >

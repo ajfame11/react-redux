@@ -4,7 +4,7 @@ import { usersReducer } from "./usersReducer";
 
 export const rootReducer = combineReducers({
     users: usersReducer,
-    posts: postsReducer  //previously: {array:posts, selectedPost:..}
+    posts: postsReducer 
 })
 
 export default rootReducer

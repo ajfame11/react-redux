@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-
 import { getPosts } from '../actions/postsActions'
 
 class PostsContainer extends Component {

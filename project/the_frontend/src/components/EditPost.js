@@ -6,14 +6,10 @@ import { useEffect } from 'react';
 import { connect, useDispatch, useSelector} from 'react-redux'
 import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import { editPost, getPost } from '../actions/postsActions';
-// import { editPost } from '../actions/postActions';
 
 
 const EditPost=(props)=> {
 
-    // const [post, setPost] = useState([])
-    
-    
     const id= props.match.params.id
 
    const location= useLocation()
@@ -43,7 +39,6 @@ const EditPost=(props)=> {
     
     const handleSubmit = async (e )=> {
         e.preventDefault()
-        // this.props.addPost(this.state)
         const tempPost={
             title: title,
             body: body,
@@ -51,7 +46,6 @@ const EditPost=(props)=> {
         }
          dispatch(editPost(tempPost))
          history.push('/posts')
-        // window.location.assign("/posts")
         
 
     }
